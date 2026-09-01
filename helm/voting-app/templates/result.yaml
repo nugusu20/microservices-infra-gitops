@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.result.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.result.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.result.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.result.name }}
+    spec:
+      containers:
+        - name: {{ .Values.result.name }}
+          image: "{{ .Values.result.image }}:{{ .Values.result.tag }}"
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.result.service.targetPort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.result.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.result.name }}
+  ports:
+    - port: {{ .Values.result.service.port }}
+      targetPort: {{ .Values.result.service.targetPort }}

@@ -1,0 +1,51 @@
+namespace: voting
+
+images:
+  pullPolicy: IfNotPresent
+
+vote:
+  name: vote
+  replicas: 1
+  image: devops-voting/vote
+  tag: local
+  service:
+    port: 80
+    targetPort: 80
+
+result:
+  name: result
+  replicas: 1
+  image: devops-voting/result
+  tag: local
+  service:
+    port: 80
+    targetPort: 80
+
+worker:
+  name: worker
+  replicas: 1
+  image: devops-voting/worker
+  tag: local
+
+redis:
+  name: redis
+  replicas: 1
+  image: redis
+  tag: alpine
+  service:
+    port: 6379
+    targetPort: 6379
+
+postgres:
+  name: db
+  image: postgres
+  tag: 15-alpine
+  service:
+    port: 5432
+    targetPort: 5432
+  auth:
+    user: postgres
+    password: postgres
+    database: postgres
+  storage:
+    size: 1Gi
