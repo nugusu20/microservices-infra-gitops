@@ -6,8 +6,8 @@ images:
 vote:
   name: vote
   replicas: 1
-  image: devops-voting/vote
-  tag: local
+  image: ghcr.io/nugusu20/vote
+  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
   service:
     port: 80
     targetPort: 80
@@ -15,8 +15,8 @@ vote:
 result:
   name: result
   replicas: 1
-  image: devops-voting/result
-  tag: local
+  image: ghcr.io/nugusu20/result
+  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
   service:
     port: 80
     targetPort: 80
@@ -24,8 +24,8 @@ result:
 worker:
   name: worker
   replicas: 1
-  image: devops-voting/worker
-  tag: local
+  image: ghcr.io/nugusu20/worker
+  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
 
 redis:
   name: redis
