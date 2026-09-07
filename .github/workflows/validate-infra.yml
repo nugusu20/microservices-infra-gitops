@@ -1,0 +1,30 @@
+name: Validate Infrastructure
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate manifests and Helm chart
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Lint Helm chart
+        run: helm lint helm/voting-app
+
+      - name: Render Helm chart
+        run: helm template voting-app helm/voting-app
+
+      - name: Validate Kubernetes manifests
+        run: |
+          docker run --rm \
+            -v "${PWD}:/work" \
+            ghcr.io/yannh/kubeconform:v0.6.7 \
+            -strict -summary /work/k8s/base
