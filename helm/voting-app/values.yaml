@@ -5,7 +5,7 @@ images:
 
 vote:
   name: vote
-  replicas: 2
+  replicas: 3
   image: ghcr.io/nugusu20/vote
   tag: 5b3ca3907fd144d30776b0b700f9b41d406821d0
   service:
