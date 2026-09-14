@@ -7,7 +7,7 @@ vote:
   name: vote
   replicas: 1
   image: ghcr.io/nugusu20/vote
-  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
+  tag: 5b3ca3907fd144d30776b0b700f9b41d406821d0
   service:
     port: 80
     targetPort: 80
@@ -16,7 +16,7 @@ result:
   name: result
   replicas: 1
   image: ghcr.io/nugusu20/result
-  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
+  tag: 5b3ca3907fd144d30776b0b700f9b41d406821d0
   service:
     port: 80
     targetPort: 80
@@ -25,7 +25,7 @@ worker:
   name: worker
   replicas: 1
   image: ghcr.io/nugusu20/worker
-  tag: 6530efac3c2a8cfe5d34c1db8127e7781ba02782
+  tag: 5b3ca3907fd144d30776b0b700f9b41d406821d0
 
 redis:
   name: redis
