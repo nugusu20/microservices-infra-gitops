@@ -13,3 +13,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: voting
+  syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true    
